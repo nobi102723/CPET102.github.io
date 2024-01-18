@@ -370,6 +370,7 @@ https://templatemo.com/tm-559-zay-shop
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/templatemo.js"></script>
 <script src="assets/js/custom.js"></script>
+<script src="assets/js/search-function.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const productsContainer = document.getElementById('productsContainer');
@@ -393,44 +394,6 @@ https://templatemo.com/tm-559-zay-shop
             loadProductCard(i);
         }
 
-    });
-    
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.getElementById('searchForm');
-        const input = document.getElementById('inputModalSearch');
-        const productsContainer = document.getElementById('productsContainer');
-        const modal = new bootstrap.Modal(document.getElementById('templatemo_search')); // Initialize the modal
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            const searchTerm = input.value.toLowerCase();
-
-            // Load product cards from another HTML file
-            fetch('products.html')  // Update the path to your external HTML file
-                .then(response => response.text())
-                .then(data => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, 'text/html');
-                    const products = doc.querySelectorAll('.product-wap');
-
-                    // Clear existing product cards
-                    productsContainer.innerHTML = '';
-
-                    products.forEach(function (product) {
-                        const title = product.querySelector('.card-body .h3').innerText.toLowerCase();
-                        const additionalInfo = product.querySelector('.card-body ul li').innerText.toLowerCase();
-
-                        if (title.includes(searchTerm) || additionalInfo.includes(searchTerm)) {
-                            // Append matched product to the container
-                            productsContainer.appendChild(product.parentNode);
-                        }
-                    });
-
-                    // Hide the modal after handling the search
-                    modal.hide();
-                })
-                .catch(error => console.error('Error loading product cards:', error));
-        });
     });
 </script>
 <!-- End Script -->
