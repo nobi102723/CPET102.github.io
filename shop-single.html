@@ -481,6 +481,7 @@ https://templatemo.com/tm-559-zay-shop
         function updateProductDetails(product, container) {
             if (product && container) {
                 // Create a new product HTML template
+                const newHref = 'shop-single.html?q=' + encodeURIComponent(product.name);
                 const productHTML = `
                     <div class="p-2 pb-3">
                         <div class="product-wap card rounded-0">
@@ -495,7 +496,7 @@ https://templatemo.com/tm-559-zay-shop
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" id="rtitle" class="h3 text-decoration-none">${product.name}</a>
+                                <a href="${newHref}" id="rtitle" class="h3 text-decoration-none">${product.name}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li id="rbrand}">${product.brand}</li>
                                     <li class="pt-2">
