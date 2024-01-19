@@ -371,9 +371,9 @@ https://templatemo.com/tm-559-zay-shop
 <script src="assets/js/custom.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const input = document.getElementById('inputModalSearch');
         const productsContainer = document.getElementById('productsContainer');
         const modal = new bootstrap.Modal(document.getElementById('templatemo_search'));
+        const container = document.getElementById('productsContainer');
 
         const searchParams = new URLSearchParams(window.location.search);
         const searchTerm = searchParams.get('q');
@@ -381,30 +381,76 @@ https://templatemo.com/tm-559-zay-shop
         if (searchTerm) {
             // Your search logic here
             // Example: Display the search term in an alert
-            const productsContainer = document.getElementById('productsContainer');
-        
-                    // Load product cards from another HTML file
-                fetch('products.html')  // Update the path to your external HTML file
-                    .then(response => response.text())
-                    .then(data => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data, 'text/html');
-                        const products = doc.querySelectorAll('.product-wap');
-        
-                            // Clear existing product cards
-                        productsContainer.innerHTML = '';
-        
-                        products.forEach(function (product) {
-                            const title = product.querySelector('.card-body .h3').innerText.toLowerCase();
-                            const additionalInfo = product.querySelector('.card-body ul li').innerText.toLowerCase();
-        
-                        if (title.includes(searchTerm) || additionalInfo.includes(searchTerm)) {
-                            // Append matched product to the container
-                            productsContainer.appendChild(product.parentNode);
-                        }
-                    })
-                .catch(error => console.error('Error loading product cards:', error));
-            });
+            // Load product cards from another HTML file
+            fetch('assets/js/database.json') // Assuming 'database.json' is in the 'assets/js' folder
+                .then(response => response.json())
+                .then(data => {
+                    // Filter products based on the search term
+                    const searchResults = data.filter(product =>
+                        product.name.toLowerCase().includes(searchTerm) ||
+                        product.brand.toLowerCase().includes(searchTerm) ||
+                        product.description.toLowerCase().includes(searchTerm)
+                    );
+
+                    // Clear previous search results
+                    container.innerHTML = '';
+
+                    // Use the updateProductDetails function to display search results
+                    searchResults.forEach(product => {
+                        updateProductDetails(product, container);
+                    });
+                })
+                .catch(error => console.error('Error loading data:', error));
+        }
+
+        function updateProductDetails(product, container) {
+            if (product && container) {
+                // Create a new product HTML template
+                const productHTML = `
+                    <div class="col-md-4">
+                        <div class="card mb-4 product-wap rounded-0">
+                            <div class="card rounded-0">
+                                <img class="card-img rounded-0 img-fluid" src="${product.dir}/${product.idp}.png">
+                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                    <ul class="list-unstyled">
+                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <a href="shop-single.html" class="h3 text-decoration-none">${product.name}</a>
+                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                    <li>${product.brand}</li>
+                                    <li class="pt-2">
+                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                    </li>
+                                </ul>
+                                <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                    <li>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                    </li>
+                                </ul>
+                                <p class="text-center mb-0">${product.price}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    
+                // Append the product HTML to the container
+                container.insertAdjacentHTML('beforeend', productHTML);
+            } else {
+                console.error('Product or container not provided.');
+            }
         }
     });
 </script>

@@ -173,10 +173,10 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
-                        <li class="page-item disabled">
-                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
+                        <li class="page-item disabled" id="page1">
+                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#" tabindex="-1">1</a>
                         </li>
-                        <li class="page-item">
+                        <li class="page-item" id="page2">
                             <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="shop2.html">2</a>
                         </li>
                     </ul>
@@ -372,29 +372,105 @@ https://templatemo.com/tm-559-zay-shop
 <script src="assets/js/search-function.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const productsContainer = document.getElementById('productsContainer');
+        const container = document.getElementById('productsContainer');
+        const startId = 1
+        const endId = 15
+        //IN-DEV FOR SINGLE SHOP.HTML switching pages via function
+        //const shopParams = new URLSearchParams(window.location.search);
+        //const shopTerm = shopParams.get('q');
 
-        // Load product cards from products.html
-        const loadProductCard = (productId) => {
-            fetch('products.html')
-                .then(response => response.text())
-                .then(data => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, 'text/html');
-                    const product = doc.getElementById(`product${productId}`);
-                    if (product) {
-                        productsContainer.innerHTML += product.outerHTML;
-                    }
-                })
-                .catch(error => console.error(`Error loading product card ${productId}:`, error));
-        };
+        //let startId, endId;
 
-        for (let i = 1; i <= 15; i++) {
-            loadProductCard(i);
-        }
+        //if (shopTerm) {
+            //const queryNumber = parseInt(shopTerm);
 
+            //if (!isNaN(queryNumber)) {
+                //if (queryNumber > 1) {
+                    //const numberOfDigits = Math.floor(Math.log10(queryNumber)) + 1;
+                    //const adjustment = 10 * numberOfDigits;
+
+                    //startId = queryNumber + adjustment;
+                    //endId = queryNumber + adjustment + 9;
+                //} else {
+                    //startId = 1;
+                    //endId = 15;
+                //}
+            //} else {
+                //startId = 1;
+                //endId = 15;
+            //}
+        //} else {
+            //startId = 1;
+            //endId = 15;
+        //}
+    
+        fetch('assets/js/database.json') // Assuming 'database.json' is in the 'assets/js' folder
+            .then(response => response.json())
+            .then(data => {
+                // Filter products to include only those with IDs within the specified range
+                const filteredProducts = data.filter(product => product.id >= startId && product.id <= endId);
+    
+                // Use the updateProductDetails function to update and append the product information
+                filteredProducts.forEach(product => {
+                    updateProductDetails(product, container);
+                });
+    
+            })
+            .catch(error => console.error('Error loading data:', error));
     });
+    
+    function updateProductDetails(product, container) {
+        if (product && container) {
+            // Create a new product HTML template
+            const newHref = 'shop-single.html?q=' + encodeURIComponent(product.name);
+            const productHTML = `
+                <div class="col-md-4">
+                    <div class="card mb-4 product-wap rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" src="${product.dir}/${product.idp}.png">
+                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                <ul class="list-unstyled">
+                                    <li><a class="btn btn-success text-white" href="${newHref}"><i class="far fa-heart"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2" href="${newHref}l"><i class="far fa-eye"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2" href="${newHref}"><i class="fas fa-cart-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a href="${newHref}" class="h3 text-decoration-none" id="${product.id}">${product.name}</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li>${product.brand}</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                            <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                </li>
+                            </ul>
+                            <p class="text-center mb-0">${product.price}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+    
+            // Append the product HTML to the container
+            container.insertAdjacentHTML('beforeend', productHTML);
+        } else {
+            console.error('Product or container not provided.');
+        }
+    }
 </script>
+
 <!-- End Script -->
 </body>
 
