@@ -94,5 +94,11 @@ th:last-child {
 
 .currency {
     font-weight: normal; /* Reset font weight */
-    /* Add any additional styling here */
+}
+
+.center-bold {
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
 }
