@@ -78,6 +78,20 @@ th:last-child {
     color: white;
 }
 
+.checkout-button {
+    display: inline-block;
+    padding: 16px 150px;
+    background-color: #59AB6E;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+    color: white;
+}
+
 .currency {
     font-weight: normal; /* Reset font weight */
     /* Add any additional styling here */

@@ -524,6 +524,16 @@ https://templatemo.com/tm-559-zay-shop
             }
         }
     </script>
+    <script>
+        // Add event listener to the "Add to Cart" button
+        document.getElementById('addToCartButton').addEventListener('click', function() {
+            // Get the product name from the page
+            const productName = document.getElementById('ptitle').textContent.trim();
+
+            // Alert the user that the product has been added to the shopping cart
+            alert(productName + ' has been added to the shopping cart');
+        });
+    </script>
     <!-- End Slider Script -->
 
 </body>
