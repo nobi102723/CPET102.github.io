@@ -202,18 +202,12 @@ https://templatemo.com/tm-559-zay-shop
                             <strong>Display: </strong><p id="pdisplay"></p>
                             <strong>Memory: </strong><p id="pmemory"></p>
                             <strong>Storage: </strong><p id="pstorage"></p>
-                            <form action="" method="GET">
-                                <input type="hidden" name="product-title" value="Activewear">
-                                <div class="row pb-3">
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
-                                    </div>
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
-                                    </div>
+                            <input type="hidden" name="product-title" value="Activewear">
+                            <div class="row pb-3">
+                                <div class="col d-grid">
+                                    <button id="addToCartButton" class="btn btn-success btn-lg add-to-cart" data-product-id="1">Add To Cart</button>
                                 </div>
-                            </form>
-
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -341,6 +335,7 @@ https://templatemo.com/tm-559-zay-shop
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/search-function.js"></script>
     <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/session.js"></script>
     <!-- End Script -->
 
     <!-- Start Slider Script -->
@@ -393,9 +388,14 @@ https://templatemo.com/tm-559-zay-shop
                             'product-detail': product.dir + '/' + product.idp + '.png',
                             'psrc1': product.dir + '/' + product.idp + '.png',
                             'psrc2': product.dir + '/' + product.idp + '(1).png',
-                            'psrc3': product.dir + '/' + product.idp + '(2).png'
+                            'psrc3': product.dir + '/' + product.idp + '(2).png',
                         };
-        
+
+                        const addToCartButton = document.getElementById('addToCartButton');
+                        if (addToCartButton) {
+                            addToCartButton.dataset.productId = product.id;
+                        }
+
                         Object.entries(elementsToUpdate).forEach(([elementId, value]) => {
                             const element = document.getElementById(elementId);
         

@@ -375,34 +375,6 @@ https://templatemo.com/tm-559-zay-shop
         const container = document.getElementById('productsContainer');
         const startId = 1
         const endId = 15
-        //IN-DEV FOR SINGLE SHOP.HTML switching pages via function
-        //const shopParams = new URLSearchParams(window.location.search);
-        //const shopTerm = shopParams.get('q');
-
-        //let startId, endId;
-
-        //if (shopTerm) {
-            //const queryNumber = parseInt(shopTerm);
-
-            //if (!isNaN(queryNumber)) {
-                //if (queryNumber > 1) {
-                    //const numberOfDigits = Math.floor(Math.log10(queryNumber)) + 1;
-                    //const adjustment = 10 * numberOfDigits;
-
-                    //startId = queryNumber + adjustment;
-                    //endId = queryNumber + adjustment + 9;
-                //} else {
-                    //startId = 1;
-                    //endId = 15;
-                //}
-            //} else {
-                //startId = 1;
-                //endId = 15;
-            //}
-        //} else {
-            //startId = 1;
-            //endId = 15;
-        //}
     
         fetch('assets/js/database.json') // Assuming 'database.json' is in the 'assets/js' folder
             .then(response => response.json())
