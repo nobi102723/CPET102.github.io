@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
 </head>
+
 <body>
      <!-- Start Top Nav -->
      <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
@@ -27,7 +28,7 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:contactus@bytebay.com">contactus@bytebay.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
                 </div>
@@ -43,7 +44,7 @@
     <!-- Close Top Nav -->
 
 
-    <!-- Header<h1 class="h1 text-success"><b>Zay</b> eCommerce</h1> -->
+    <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -62,13 +63,13 @@
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="about.html">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="shop.html">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="contact.html">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="partner.html">Partners</a>
@@ -144,7 +145,7 @@
                     <td id="sctotal">₱00</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><a href="#" class="checkout-button">CHECKOUT</a></td>
+                    <td colspan="2"><a href="#" class="checkout-button" id="checkoutbtn">CHECKOUT</a></td>
                 </tr>
             </table>
         </div>
@@ -161,7 +162,7 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            379 Pureza, Sta. Mesa, Maynila, 1008 Kalakhang Maynila
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
@@ -169,7 +170,7 @@
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:contactus@bytebay.com">contactus@bytebay.com</a>
                         </li>
                     </ul>
                 </div>
@@ -177,11 +178,11 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Brands</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="acershop.html">Acer</a></li>
-                        <li><a class="text-decoration-none" href="asusshop.html">Asus</a></li>
-                        <li><a class="text-decoration-none" href="dellshop.html">Dell</a></li>
-                        <li><a class="text-decoration-none" href="lenovoshop.html">Lenovo</a></li>
-                        <li><a class="text-decoration-none" href="msishop.html">MSI</a></li>
+                        <li><a class="text-decoration-none" href="search.html?q=acer">Acer</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=asus">Asus</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=dell">Dell</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=lenovo">Lenovo</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=msi">MSI</a></li>
                     </ul>
                 </div>
 
@@ -219,11 +220,7 @@
                     </ul>
                 </div>
                 <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
+                    <div id="google_translate_element"></div>
                 </div>
             </div>
         </div>
@@ -254,119 +251,96 @@
     <script src="assets/js/shoppingcart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Get all elements with the class "dropdown-container"
             setTimeout(() => {
                 const dropdownContainers = document.querySelectorAll('.dropdown-container');
-                console.log('Dropdown containers:', dropdownContainers);
-    
-                // Loop through each dropdown container
+
                 dropdownContainers.forEach(container => {
-                    // Create a select element
                     const selectElement = document.createElement('select');
-    
-                    // Add options from 1 to 10
+
                     for (let i = 1; i <= 10; i++) {
                         const option = document.createElement('option');
                         option.value = i;
                         option.text = i;
                         selectElement.appendChild(option);
                     }
-    
-                    // Set a default value for the select
+
                     selectElement.value = 1;
-    
-                    // Append the select element to the current dropdown container
+
                     container.appendChild(selectElement);
-    
-                    // Function to update prices
+
                     function updatePrices() {
-                        // Get the base price from the data attribute
                         const basePrice = parseFloat(container.dataset.basePrice);
-    
-                        // Get the select element inside the container
+
                         const dropdownSelect = container.querySelector('select');
-    
-                        // Check if select element exists
+
                         if (dropdownSelect) {
-                            // Add change event listener to the select element
                             dropdownSelect.addEventListener('change', () => {
-                                // Get the selected quantity from the dropdown
                                 const quantity = parseInt(dropdownSelect.value);
-    
-                                // Calculate the new price
                                 const newPrice = basePrice * quantity;
-    
-                                // Find the corresponding tdprice element
                                 const tdPriceElement = container.nextElementSibling;
-    
-                                // Format the new price with commas for thousands
                                 const formattedPrice = newPrice.toLocaleString();
-    
-                                // Update the text content of tdprice with the formatted price
+
                                 tdPriceElement.textContent = '₱' + formattedPrice;
-    
-                                // Recalculate and update total
+
                                 calculateTotal();
                             });
                         }
                     }
-    
-                    // Call the function initially to update prices
                     updatePrices();
                 });
-    
-                // Function to calculate subtotal, tax, and total
+
                 function calculateTotal() {
-                    // Get all the price elements
                     const prices = document.querySelectorAll('.tdprice');
                     let subtotal = 0;
-    
-                    // Calculate subtotal
+
                     prices.forEach((price) => {
-                        const priceText = price.textContent.trim().replace('₱', '').replace(/,/g, ''); // Remove currency symbol and commas
-                        const priceValue = parseFloat(priceText); // Parse price as float
-                        subtotal += priceValue; // Accumulate subtotal
+                        const priceText = price.textContent.trim().replace('₱', '').replace(/,/g, ''); 
+                        const priceValue = parseFloat(priceText);
+                        subtotal += priceValue;
                     });
-    
-                    // Calculate tax (assuming 12% tax rate)
+
                     const tax = subtotal * 0.12;
-    
-                    // Calculate total
                     const total = subtotal + tax;
-    
-                    // Format subtotal, tax, and total with commas for thousands
+
                     const formattedSubtotal = subtotal.toLocaleString();
                     const formattedTax = tax.toLocaleString();
                     const formattedTotal = total.toLocaleString();
-    
-                    // Update subtotal, tax, and total in the HTML with formatted values
+
                     document.getElementById('scsubtotal').innerHTML = '₱' + formattedSubtotal;
                     document.getElementById('sctax').innerHTML = '₱' + formattedTax;
                     document.getElementById('sctotal').innerHTML = '₱' + formattedTotal;
                 }
-    
-                // Call the function initially to calculate total
                 calculateTotal();
-    
-                // Listen for click events on remove buttons
+
                 document.addEventListener('click', function(event) {
                     if (event.target.classList.contains('remove-button')) {
-                        // Get the parent tr element
                         const trElement = event.target.closest('tr');
                         
-                        // Remove the tr element from the DOM
                         trElement.remove();
-    
-                        // Recalculate and update total
+
                         calculateTotal();
                     }
                 });
-            }, 500); // Delay in milliseconds (1 second)
+            }, 500);
         });
     </script>
-    
-    
-    <!-- End Script -->
-
+    <script>
+        document.getElementById('checkoutbtn').addEventListener('click', function() {
+            var cartItems = document.querySelectorAll('.cart-item');
+            if (cartItems.length > 0) {
+                alert('Orders have been placed.');
+            } else {
+                alert('Your shopping cart is empty. Please add products before checking out.');
+            }
+        });
+    </script>
+    <script type="text/javascript" >
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- End Script -->
 </body>
+
 </html>

@@ -19,13 +19,6 @@
 
     <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-<!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
 </head>
 
 <body>
@@ -35,7 +28,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:contactus@bytebay.com">contactus@bytebay.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
                 </div>
@@ -70,13 +63,13 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="about.html">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="shop.html">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="contact.html">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="partner.html">Partners</a>
@@ -134,13 +127,16 @@ https://templatemo.com/tm-559-zay-shop
     </div>
 
     <!-- Start Map -->
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.99237996981!2d121.00172331185254!3d14.599509885827965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9e42d5f7275%3A0x569eb3406c633fbe!2sPolytechnic%20University%20of%20the%20Philippines%20-%20Institute%20of%20Technology!5e0!3m2!1sen!2sph!4v1705237694340!5m2!1sen!2sph" style="border: 5px;; width: 100%; height: 80%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.99237996981!2d121.00172331185254!3d14.599509885827965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9e42d5f7275%3A0x569eb3406c633fbe!2sPolytechnic%20University%20of%20the%20Philippines%20-%20Institute%20of%20Technology!5e0!3m2!1sen!2sph!4v1705237694340!5m2!1sen!2sph" style="border: 5px; width: 100%; height: 800px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>    
-    <!-- Ena Map -->
+    <!-- End Map -->
 
     <!-- Start Contact -->
     <div class="container py-5">
+        <div class="text-center col-md-6 mb-3 mx-auto">
+            <p class="h2 logo">Operating Hours: 10:00 AM - 9:00 PM</p>
+        </div>
         <div class="row py-5">
             <form class="col-md-9 m-auto" method="post" role="form">
                 <div class="row">
@@ -163,14 +159,13 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
                 <div class="row">
                     <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">Let’s Talk</button>
+                        <button type="submit" class="btn btn-success btn-lg px-3" id="submitform">Let’s Talk</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <!-- End Contact -->
-
 
    <!-- Start Footer -->
    <footer class="bg-dark" id="tempaltemo_footer">
@@ -182,7 +177,7 @@ https://templatemo.com/tm-559-zay-shop
                 <ul class="list-unstyled text-light footer-link-list">
                     <li>
                         <i class="fas fa-map-marker-alt fa-fw"></i>
-                        123 Consectetur at ligula 10660
+                        379 Pureza, Sta. Mesa, Maynila, 1008 Kalakhang Maynila
                     </li>
                     <li>
                         <i class="fa fa-phone fa-fw"></i>
@@ -190,7 +185,7 @@ https://templatemo.com/tm-559-zay-shop
                     </li>
                     <li>
                         <i class="fa fa-envelope fa-fw"></i>
-                        <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                        <a class="text-decoration-none" href="mailto:contactus@bytebay.com">contactus@bytebay.com</a>
                     </li>
                 </ul>
             </div>
@@ -198,11 +193,11 @@ https://templatemo.com/tm-559-zay-shop
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-light border-bottom pb-3 border-light">Brands</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="acershop.html">Acer</a></li>
-                    <li><a class="text-decoration-none" href="asusshop.html">Asus</a></li>
-                    <li><a class="text-decoration-none" href="dellshop.html">Dell</a></li>
-                    <li><a class="text-decoration-none" href="lenovoshop.html">Lenovo</a></li>
-                    <li><a class="text-decoration-none" href="msishop.html">MSI</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=acer">Acer</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=asus">Asus</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=dell">Dell</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=lenovo">Lenovo</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=msi">MSI</a></li>
                 </ul>
             </div>
 
@@ -268,6 +263,17 @@ https://templatemo.com/tm-559-zay-shop
 <script src="assets/js/templatemo.js"></script>
 <script src="assets/js/custom.js"></script>
 <script src="assets/js/search-function.js"></script>
+<script>
+    document.getElementById('submitform').addEventListener('click', function() {
+        alert("You're all set! Your email has been sent. Please expect our response shortly.");
+    });
+</script>
+<script type="text/javascript" >
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <!-- End Script -->
 </body>
 

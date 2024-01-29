@@ -20,13 +20,6 @@
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
-<!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
 </head>
 
 <body>
@@ -36,7 +29,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:contactus@bytebay.com">contactus@bytebay.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
                 </div>
@@ -71,13 +64,13 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="about.html">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="shop.html">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="contact.html">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="partner.html">Partners</a>
@@ -239,7 +232,7 @@ https://templatemo.com/tm-559-zay-shop
                 <ul class="list-unstyled text-light footer-link-list">
                     <li>
                         <i class="fas fa-map-marker-alt fa-fw"></i>
-                        123 Consectetur at ligula 10660
+                        379 Pureza, Sta. Mesa, Maynila, 1008 Kalakhang Maynila
                     </li>
                     <li>
                         <i class="fa fa-phone fa-fw"></i>
@@ -247,7 +240,7 @@ https://templatemo.com/tm-559-zay-shop
                     </li>
                     <li>
                         <i class="fa fa-envelope fa-fw"></i>
-                        <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                        <a class="text-decoration-none" href="mailto:contactus@bytebay.com">contactus@bytebay.com</a>
                     </li>
                 </ul>
             </div>
@@ -255,11 +248,11 @@ https://templatemo.com/tm-559-zay-shop
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-light border-bottom pb-3 border-light">Brands</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="acershop.html">Acer</a></li>
-                    <li><a class="text-decoration-none" href="asusshop.html">Asus</a></li>
-                    <li><a class="text-decoration-none" href="dellshop.html">Dell</a></li>
-                    <li><a class="text-decoration-none" href="lenovoshop.html">Lenovo</a></li>
-                    <li><a class="text-decoration-none" href="msishop.html">MSI</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=acer">Acer</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=asus">Asus</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=dell">Dell</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=lenovo">Lenovo</a></li>
+                    <li><a class="text-decoration-none" href="search.html?q=msi">MSI</a></li>
                 </ul>
             </div>
 
@@ -318,219 +311,210 @@ https://templatemo.com/tm-559-zay-shop
 </footer>
 <!-- End Footer -->
 
-    <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/search-function.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/session.js"></script>
-    <!-- End Script -->
-
-    <!-- Start Slider Script -->
-    <script>
-        // Randomize Rating and Comment Numbers
-        const randomComments = Math.floor(Math.random() * 50) + 1; // Generates a random integer between 1 and 50
-        
-        const randomCommentsElement = document.getElementById('randomComments');
-        
-        if (randomCommentsElement) {
-            randomCommentsElement.textContent = randomComments;
-        }
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Extract the value of the 'q' parameter from the URL
-            const productParams = new URLSearchParams(window.location.search);
-            const productTerm = productParams.get('q');
-        
-            if (productTerm) {
-                fetch('assets/js/database.json')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Filter products based on the search term
-                        const foundProduct = data.find(product => product.name.toLowerCase() === productTerm.toLowerCase());
-                        updateProductDetails(foundProduct);
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data:', error);
-                    });
-        
-                function updateProductDetails(product) {
-                    if (product) {
-                        const elementsToUpdate = {
-                            'ptitle': product.name,
-                            'pprice': product.price,
-                            'pbrand': product.brand,
-                            'pdescription': product.description,
-                            'pprocessor': product.processor,
-                            'posystem': product.osystem,
-                            'pvcard': product.vcard,
-                            'pdisplay': product.display,
-                            'pmemory': product.memory,
-                            'pstorage': product.storage,
-                            'product-detail': product.dir + '/' + product.idp + '.png',
-                            'psrc1': product.dir + '/' + product.idp + '.png',
-                            'psrc2': product.dir + '/' + product.idp + '(1).png',
-                            'psrc3': product.dir + '/' + product.idp + '(2).png',
-                        };
-
-                        const addToCartButton = document.getElementById('addToCartButton');
-                        if (addToCartButton) {
-                            addToCartButton.dataset.productId = product.id;
-                        }
-
-                        Object.entries(elementsToUpdate).forEach(([elementId, value]) => {
-                            const element = document.getElementById(elementId);
-        
-                            if (element) {
-                                element.innerText = value;
-                                if (element.tagName === 'IMG') {
-                                    element.src = value;
-                                }
-                            } else {
-                                console.error(`Element with id ${elementId} not found in the HTML.`);
-                            }
-                        });
-                    } else {
-                        console.error(`Product with search term ${productTerm} not found.`);
+<!-- Start Script -->
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/templatemo.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="assets/js/search-function.js"></script>
+<script src="assets/js/slick.min.js"></script>
+<script src="assets/js/session.js"></script>
+<script>
+    const randomComments = Math.floor(Math.random() * 50) + 1;
+    
+    const randomCommentsElement = document.getElementById('randomComments');
+    
+    if (randomCommentsElement) {
+        randomCommentsElement.textContent = randomComments;
+    }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const productParams = new URLSearchParams(window.location.search);
+        const productTerm = productParams.get('q');
+    
+        if (productTerm) {
+            fetch('assets/js/database.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
                     }
-                }
-            } else {
-                console.error('Search term not found in the URL.');
-            }
-        });        
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const container = document.getElementById('carousel-related-product');
-            const numberOfProducts = 9; // Change this to your desired number of products
-        
-            fetch('assets/js/database.json') // Assuming 'database.json' is in the 'assets/js' folder
-                .then(response => response.json())
-                .then(data => {
-                    // Pick random products from the data array
-                    const randomProducts = getRandomProducts(data, numberOfProducts);
-        
-                    // Use the updateProductDetails function to update and append the product information
-                    randomProducts.forEach(product => {
-                        updateProductDetails(product, container);
-                    });
-        
-                    // Initialize or reinitialize the carousel after the content is added
-                    initializeCarousel();
+                    return response.json();
                 })
-                .catch(error => console.error('Error loading data:', error));
-        
-            function initializeCarousel() {
-                // Reinitialize the carousel
-                $('#carousel-related-product').slick({
-                    infinite: true,
-                    arrows: false,
-                    slidesToShow: 4,
-                    slidesToScroll: 3,
-                    dots: true,
-                    responsive: [
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                slidesToShow: 3,
-                                slidesToScroll: 3
-                            }
-                        },
-                        {
-                            breakpoint: 600,
-                            settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 3
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 3
-                            }
-                        }
-                    ]
+                .then(data => {
+                    const foundProduct = data.find(product => product.name.toLowerCase() === productTerm.toLowerCase());
+                    updateProductDetails(foundProduct);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
                 });
+    
+            function updateProductDetails(product) {
+                if (product) {
+                    const elementsToUpdate = {
+                        'ptitle': product.name,
+                        'pprice': product.price,
+                        'pbrand': product.brand,
+                        'pdescription': product.description,
+                        'pprocessor': product.processor,
+                        'posystem': product.osystem,
+                        'pvcard': product.vcard,
+                        'pdisplay': product.display,
+                        'pmemory': product.memory,
+                        'pstorage': product.storage,
+                        'product-detail': product.dir + '/' + product.idp + '.png',
+                        'psrc1': product.dir + '/' + product.idp + '.png',
+                        'psrc2': product.dir + '/' + product.idp + '(1).png',
+                        'psrc3': product.dir + '/' + product.idp + '(2).png',
+                    };
+
+                    const addToCartButton = document.getElementById('addToCartButton');
+                    if (addToCartButton) {
+                        addToCartButton.dataset.productId = product.id;
+                    }
+
+                    Object.entries(elementsToUpdate).forEach(([elementId, value]) => {
+                        const element = document.getElementById(elementId);
+    
+                        if (element) {
+                            element.innerText = value;
+                            if (element.tagName === 'IMG') {
+                                element.src = value;
+                            }
+                        } else {
+                            console.error(`Element with id ${elementId} not found in the HTML.`);
+                        }
+                    });
+                } else {
+                    console.error(`Product with search term ${productTerm} not found.`);
+                }
             }
-        
-            function getRandomProducts(data, numberOfProducts) {
-                const shuffledProducts = data.sort(() => 0.5 - Math.random());
-                return shuffledProducts.slice(0, numberOfProducts);
-            }
-        });
-        
-        function updateProductDetails(product, container) {
-            if (product && container) {
-                // Create a new product HTML template
-                const newHref = 'shop-single.html?q=' + encodeURIComponent(product.name);
-                const productHTML = `
-                    <div class="p-2 pb-3">
-                        <div class="product-wap card rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" id="rimg" src="${product.dir}/${product.idp}.png">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="${newHref}"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="${newHref}"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="${newHref}"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="${newHref}" id="rtitle" class="h3 text-decoration-none">${product.name}</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li id="rbrand}">${product.brand}</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
+        } else {
+            console.error('Search term not found in the URL.');
+        }
+    });        
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const container = document.getElementById('carousel-related-product');
+        const numberOfProducts = 9;
+    
+        fetch('assets/js/database.json')
+            .then(response => response.json())
+            .then(data => {
+                const randomProducts = getRandomProducts(data, numberOfProducts);
+    
+                randomProducts.forEach(product => {
+                    updateProductDetails(product, container);
+                });
+    
+                initializeCarousel();
+            })
+            .catch(error => console.error('Error loading data:', error));
+    
+        function initializeCarousel() {
+            $('#carousel-related-product').slick({
+                infinite: true,
+                arrows: false,
+                slidesToShow: 4,
+                slidesToScroll: 3,
+                dots: true,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 3
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 3
+                        }
+                    }
+                ]
+            });
+        }
+    
+        function getRandomProducts(data, numberOfProducts) {
+            const shuffledProducts = data.sort(() => 0.5 - Math.random());
+            return shuffledProducts.slice(0, numberOfProducts);
+        }
+    });
+    
+    function updateProductDetails(product, container) {
+        if (product && container) {
+            const newHref = 'shop-single.html?q=' + encodeURIComponent(product.name);
+            const productHTML = `
+                <div class="p-2 pb-3">
+                    <div class="product-wap card rounded-0">
+                        <div class="card rounded-0">
+                            <img class="card-img rounded-0 img-fluid" id="rimg" src="${product.dir}/${product.idp}.png">
+                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                <ul class="list-unstyled">
+                                    <li><a class="btn btn-success text-white" href="${newHref}"><i class="far fa-heart"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2" href="${newHref}"><i class="far fa-eye"></i></a></li>
+                                    <li><a class="btn btn-success text-white mt-2" href="${newHref}"><i class="fas fa-cart-plus"></i></a></li>
                                 </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0" id="rprice">${product.price}</p>
                             </div>
                         </div>
+                        <div class="card-body">
+                            <a href="${newHref}" id="rtitle" class="h3 text-decoration-none">${product.name}</a>
+                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                <li id="rbrand}">${product.brand}</li>
+                                <li class="pt-2">
+                                    <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                    <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                </li>
+                            </ul>
+                            <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                </li>
+                            </ul>
+                            <p class="text-center mb-0" id="rprice">${product.price}</p>
+                        </div>
                     </div>
-                `;
-        
-                // Append the product HTML to the container
-                container.insertAdjacentHTML('beforeend', productHTML);
-            } else {
-                console.error('Product or container not provided.');
-            }
+                </div>
+            `;
+    
+            container.insertAdjacentHTML('beforeend', productHTML);
+        } else {
+            console.error('Product or container not provided.');
         }
-    </script>
-    <script>
-        // Add event listener to the "Add to Cart" button
-        document.getElementById('addToCartButton').addEventListener('click', function() {
-            // Get the product name from the page
-            const productName = document.getElementById('ptitle').textContent.trim();
+    }
+</script>
+<script>
+    document.getElementById('addToCartButton').addEventListener('click', function() {
+        const productName = document.getElementById('ptitle').textContent.trim();
 
-            // Alert the user that the product has been added to the shopping cart
-            alert(productName + ' has been added to the shopping cart');
-        });
-    </script>
-    <!-- End Slider Script -->
+        alert(productName + ' has been added to the shopping cart');
+    });
+</script>
+<script type="text/javascript" >
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<!-- End Script -->
 
 </body>
 
