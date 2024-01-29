@@ -20,13 +20,11 @@ function addToCart(productId) {
     console.log('Cart items:', cartItems); 
 }
 
-// Function to set a cookie
 function setCookie(name, value, days = 7) {
     const expires = new Date(Date.now() + days * 86400000).toUTCString();
     document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
 }
 
-// Function to get a cookie
 function getCookie(name) {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
