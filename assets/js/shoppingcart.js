@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     updateProductDetails(product, quantity, container);
                 });
 
-                // Add event listener to remove buttons after displaying cart items
                 addRemoveButtonListeners();
             })
             .catch(error => console.error('Error loading data:', error));
@@ -73,20 +72,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function addRemoveButtonListeners() {
-        // Get all remove buttons
         const removeButtons = document.querySelectorAll('.remove-button');
 
-        // Add click event listener to each remove button
         removeButtons.forEach(button => {
             button.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
+                event.preventDefault(); 
 
                 const productId = button.getAttribute('data-product-id');
 
-                // Remove item from the cookie
                 removeItemFromCart(productId);
 
-                // Remove item from the page
                 button.closest('tr').remove();
             });
         });
@@ -95,6 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function removeItemFromCart(productId) {
         const cookieCart = JSON.parse(getCookie('cart')) || {};
         delete cookieCart[productId];
-        setCookie('cart', JSON.stringify(cookieCart), 30); // Set cookie for 30 days (or any desired duration)
+        setCookie('cart', JSON.stringify(cookieCart), 30);
     }
 });
