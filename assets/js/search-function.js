@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchTerm = input.value.toLowerCase();
 
         // Hide the modal after handling the search (you can remove this line if you want to keep the modal open)
-        window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+        window.location.href = `search?q=${encodeURIComponent(searchTerm)}`;
         modal.hide();
     });
 });
